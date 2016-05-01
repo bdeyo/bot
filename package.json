@@ -1,0 +1,19 @@
+{
+ "name": "discordapp-tuttlebot",
+ "descriptioin": "A chat bot for our server",
+ "version": "0.0.1",
+ "author": {
+	"name": "Ben"
+ },
+ "main": "index.js",
+ "scripts": {
+	"start": "node index.js"
+ },
+ "dependencies": {
+	"discord.js": "^3.6.2",
+	"imgur-search": "^1.0.1"
+ },
+ "keywords": [
+	"tuttlebot"
+ ]
+}
