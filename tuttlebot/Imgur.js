@@ -1,8 +1,9 @@
 var env = require('../config.json'),
+	key = require('../auth.json'),
 	Imgur = require("imgur-search");
 
 var ImgurModule = function() {
-	this.imgSearch = new Imgur(env.imgur_key);
+	this.imgSearch = new Imgur(key.imgur_key);
 };
 
 ImgurModule.prototype.Message = function(keyword, message, callback) {
