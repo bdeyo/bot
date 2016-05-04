@@ -3,6 +3,7 @@ var env = require('../config.json'),
 	Why = require('./Why.js'),
 	Dam = require('./Dam.js'),
 	Horse = require('./Horse.js'),
+	Happy = require('./Happy.js')
 	Help = require('./Help.js');
 
 var Tuttlebot = function () {
@@ -12,6 +13,7 @@ var Tuttlebot = function () {
 	this.Why = new Why;
 	this.Dam = new Dam;
 	this.Horse = new Horse;
+	this.Happy = new Happy;
 };
 
 Tuttlebot.prototype.loadKeywords = function () {
