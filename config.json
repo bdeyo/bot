@@ -4,7 +4,8 @@
 	"Help": "!commands",
 	"Why": "!why",
 	"Dam": "!dam",
-	"Horse": "!horse"
+	"Horse": "!horse",
+	"Happy": "!happy"
  },
  "database": {
 	"host": "127.0.0.1",
