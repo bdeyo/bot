@@ -2,7 +2,8 @@
  "keywords": {
 	"Imgur": "!img",
 	"Help": "!commands",
-	"Why": "!why"
+	"Why": "!why",
+	"Dam": "!dam"
  },
  "database": {
 	"host": "127.0.0.1",
