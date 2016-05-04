@@ -2,6 +2,7 @@ var env = require('../config.json'),
 	Imgur = require('./Imgur.js'),
 	Why = require('./Why.js'),
 	Dam = require('./Dam.js'),
+	Horse = require('./Horse.js'),
 	Help = require('./Help.js');
 
 var Tuttlebot = function () {
@@ -10,6 +11,7 @@ var Tuttlebot = function () {
 	this.Imgur = new Imgur;
 	this.Why = new Why;
 	this.Dam = new Dam;
+	this.Horse = new Horse;
 };
 
 Tuttlebot.prototype.loadKeywords = function () {
