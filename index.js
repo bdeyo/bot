@@ -1,7 +1,30 @@
-var env = require('./config.json'),
-	Tuttlebot = require('./tuttlebot/index.js'),
-	AuthDetails = require('./auth.json'),
-	Discord = require('discord.js');
+try {
+	var env = require('./config.json');
+} catch (e){
+	env.debug = false;
+	env.respondToInvalid = false;
+}
+
+try {
+	var Tuttlebot = require('./tuttlebot/index.js');
+} catch (e){
+	console.log("Please create an index.js file in the bot folder"+e.stack);
+	process.exit();
+}
+
+try {
+	var AuthDetails = require('./auth.json'),
+} catch (e){
+	console.log("Please create an auth.json file with account email and password"+e.stack);
+	process.exit();
+}
+
+try {
+	var Discord = require("discord.js");
+} catch (e){
+	console.log("Please run npm install discord.js"+e.stack);
+	process.exit();
+}
 
 var ins = new Tuttlebot;
 var disjs = new Discord.Client();
