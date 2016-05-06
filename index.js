@@ -13,7 +13,7 @@ try {
 }
 
 try {
-	var AuthDetails = require('./auth.json'),
+	var AuthDetails = require('./auth.json');
 } catch (e){
 	console.log("Please create an auth.json file with account email and password"+e.stack);
 	process.exit();
