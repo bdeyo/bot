@@ -13,7 +13,7 @@ ImgurModule.prototype.Message = function(keyword, message, callback) {
 	if (imgurIndex > -1) {
 		this.imgSearch.search(term).then(function(results) {
 			if (results.length == 0 || results == undefined) {
-				return callback("Couldnt' find imgurs a result.");
+				return callback("You suck at searching, try again.");
 			} else {
 				var image = results[Math.floor(Math.random() * results.length)];
 				return callback(image.link);
