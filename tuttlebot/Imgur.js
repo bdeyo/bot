@@ -12,11 +12,12 @@ ImgurModule.prototype.Message = function(keyword, message, callback) {
 
 	if (imgurIndex > -1) {
 		this.imgSearch.search(term).then(function(results) {
-			if (results === undefined || results.length === 0) {
-				return callback(channel, "Couldnt' find imgurs for term: " + message.content.substring(imgurIndex + keyword.length).trim());
+			if (results.length == 0 || results == undefined) {
+				return callback("Couldnt' find imgurs a result.");
+			} else {
+				var image = results[Math.floor(Math.random() * results.length)];
+				return callback(image.link);
 			}
-			var image = results[Math.floor(Math.random() * results.length)];
-			return callback(image.link);
 		});
 	}
 }
