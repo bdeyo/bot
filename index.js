@@ -76,11 +76,11 @@ var commands = {
 				bot.sendMessage(msg.channel, "No Search Term");
 				return;
 			}
-			new Imgur(key.imgur_key).search(term).then(function(results) {
-				if (result.length == 0 || results == undefined) {
+			new Imgur(key.imgur_key).search(term).then(function(result) {
+				if (result.length == 0 || result == undefined) {
 					bot.sendMessage(msg.channel, "You suck at searching");
 				} else {
-					var img = results[Math.floor(Math.random() * results.length)];
+					var img = result[Math.floor(Math.random() * result.length)];
 					bot.sendMessage(msg.channel, img.link);
 				}
 			});
