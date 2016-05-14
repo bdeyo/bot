@@ -1,7 +1,5 @@
 try {
 	var Config = require('./config.json');
-	Config.debug = true;
-	Config.respondToInvalid = true;
 } catch (e){
 	Config.debug = false;
 	Config.respondToInvalid = false;
