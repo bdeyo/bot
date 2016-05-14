@@ -67,7 +67,7 @@ var commands = {
 		usage: "!img <search term>",
 		description: "searches imgur based on keyword",
 		process: function(bot, msg, suffix) {
-			var key = require('../auth.json');
+			var key = AuthDetails;
 			var Imgur = require('imgur-search');
 			//var ImgurResult = new Imgur(key.imgur_key);
 			
