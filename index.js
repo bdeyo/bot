@@ -21,8 +21,8 @@ try {
 
 var commands = {
 	"dam": {
-		usage: "!dam",
-		description: "return image/gif",
+		usage: "",
+		description: "returns image/gif",
 		process: function(bot, msg) {
 			var rand = Math.floor((Math.random() * 2) + 1);
 			var result;
@@ -34,7 +34,7 @@ var commands = {
 		}
 	},
 	"happy": {
-		usage: "!happy",
+		usage: "",
 		description: "returns image/gif",
 		process: function(bot, msg) {
 			var rand = Math.floor((Math.random() * 2) + 1);
@@ -47,7 +47,7 @@ var commands = {
 		}
 	},
 	"horse": {
-		usage: "!horse",
+		usage: "",
 		description: "returns horse gif",
 		process: function(bot, msg) {
 			var result = 'https://i.giphy.com/S4mOmgmpBQAXm.gif';
@@ -55,7 +55,7 @@ var commands = {
 		}
 	},
 	"img": {
-		usage: "!img <search term>",
+		usage: "<search term>",
 		description: "searches imgur based on keyword",
 		process: function(bot, msg, suffix) {
 			var key = AuthDetails;
@@ -78,7 +78,7 @@ var commands = {
 		}
 	},
 	"why": {
-		usage: "<reaction>",
+		usage: "",
 		description: "returns gif",
 		process: function(bot, msg) {
 			var result = 'https://media.giphy.com/media/1M9fmo1WAFVK0/giphy.gif';
