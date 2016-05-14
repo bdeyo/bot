@@ -1,5 +1,5 @@
 try {
-	var env = require('./config.json');
+	var Config = require('./config.json');
 } catch (e){
 	env.debug = false;
 	env.respondToInvalid = false;
