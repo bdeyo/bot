@@ -61,7 +61,7 @@ var commands = {
 			bot.sendMessage(msg.channel, result);
 		}
 	},
-	"imgur": {
+	"img": {
 		usage: "!img <search term>",
 		description: "searches imgur based on keyword",
 		process: function(bot, msg, suffix) {
