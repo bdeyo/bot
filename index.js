@@ -70,6 +70,7 @@ var commands = {
 			var Imgur = new Imgur(key.imgur_key);
 			
 			var term = suffix;
+			consol.log(suffix);
 			Imgur.search(term).then(function(results) {
 				if (result.length == 0 || results == undefined) {
 					bot.sendMessage(msg.channel, "You suck at searching");
