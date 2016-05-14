@@ -1,8 +1,10 @@
 try {
 	var Config = require('./config.json');
+	Config.debug = true;
+	Config.respondToInvalid = true;
 } catch (e){
-	env.debug = false;
-	env.respondToInvalid = false;
+	Config.debug = false;
+	Config.respondToInvalid = false;
 }
 
 /*try {
@@ -108,11 +110,21 @@ bot.on('disconnected', function() {
 bot.on("message", function (msg) {
 	//check if message is a command
 	if(msg.author.id != bot.user.id && (msg.content[0] === '!' || msg.content.indexOf(bot.user.mention()) == 0)){
+        	console.log("treating " + msg.content + " from " + msg.author + " as command");
 		var cmdTxt = msg.content.split(" ")[0].substring(1);
-        var suffix = msg.content.substring(cmdTxt.length+2);//add one for the ! and one for the space
+        	var suffix = msg.content.substring(cmdTxt.length+2);//add one for the ! and one for the space
+        	if(msg.content.indexOf(bot.user.mention()) == 0){
+			try {
+				cmdTxt = msg.content.split(" ")[1];
+				suffix = msg.content.substring(bot.user.mention().length+cmdTxt.length+2);
+			} catch(e){ //no command
+				bot.sendMessage(msg.channel,"Yes?");
+				return;
+			}
+		}
 		var cmd = commands[cmdTxt];
-        if(cmdTxt === "help"){
-            //help is special since it iterates over the other commands
+        	if(cmdTxt === "help"){
+            	//help is special since it iterates over the other commands
 			bot.sendMessage(msg.author,"Available Commands:", function(){
 				for(var cmd in commands) {
 					var info = "!" + cmd;
@@ -127,8 +139,7 @@ bot.on("message", function (msg) {
 					bot.sendMessage(msg.author,info);
 				}
 			});
-        }
-		else if(cmd) {
+        	} else if(cmd) {
 			try{
 				cmd.process(bot,msg,suffix);
 			} catch(e){
@@ -142,6 +153,8 @@ bot.on("message", function (msg) {
 			}
 		}
 	} else {
+	//message isn't a command or is from us
+        //drop our own messages to prevent feedback loops
         if(msg.author == bot.user){
             return;
         }
