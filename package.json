@@ -1,7 +1,7 @@
 {
  "name": "discordapp-tuttlebot",
  "descriptioin": "A chat bot for our server",
- "version": "0.0.1",
+ "version": "0.1.0",
  "author": {
 	"name": "Ben"
  },
@@ -14,6 +14,7 @@
 	"imgur-search": "^1.0.1"
  },
  "keywords": [
-	"tuttlebot"
+	"tuttlebot",
+	"discord"
  ]
 }
