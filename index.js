@@ -67,11 +67,14 @@ var commands = {
 		process: function(bot, msg, suffix) {
 			var key = require('../auth.json');
 			var Imgur = require('imgur-search');
-			var ImgurResult = new Imgur(key.imgur_key);
+			//var ImgurResult = new Imgur(key.imgur_key);
 			
 			var term = suffix;
-			bot.sendMessage(msg.channel, term);
-			ImgurResult.search(term).then(function(results) {
+			if(!term) {
+				bot.sendMessage(msg.channel, "No Search Term");
+				return;
+			}
+			new Imgur(key.imgur_key).search(term).then(function(results) {
 				if (result.length == 0 || results == undefined) {
 					bot.sendMessage(msg.channel, "You suck at searching");
 				} else {
