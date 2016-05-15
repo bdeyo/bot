@@ -20,7 +20,7 @@ try {
 }
 
 try {
-	var d20 = require("d20");
+	var d20 = require('d20');
 } catch (e){
 	console.log("Please include d20 in package.json to have !roll function");
 }
