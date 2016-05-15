@@ -11,7 +11,8 @@
  },
  "dependencies": {
 	"discord.js": "^3.6.2",
-	"imgur-search": "^1.0.1"
+	"imgur-search": "^1.0.1",
+	"d20": "^1.4.0"
  },
  "keywords": [
 	"tuttlebot",
