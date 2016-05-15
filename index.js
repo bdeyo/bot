@@ -22,7 +22,7 @@ try {
 try {
 	var d20 = require('d20');
 } catch (e){
-	console.log("Please include d20 in package.json to have !roll function");
+	console.log("Please run npm install d20"+e.stack);
 }
 
 var commands = {
@@ -96,7 +96,7 @@ var commands = {
 		description: "dice roller, with single command giving a d20, otherwise rolling specified combo",
 		process: function(bot, msg, suffix) {
 			if(!suffix) {
-				bot.sendMessage(msg.channel, msg.author + "rolled: " + d20.roll(20));
+				bot.sendMessage(msg.channel, msg.author + " rolled:" + d20.roll(20));
 			} else {
 				var result;
 				try {
@@ -105,7 +105,7 @@ var commands = {
 					bot.sendMessage(msg.channel, "Could not roll " + suffix);
 					return;
 				}
-				bot.sendMessage(msg.channel, msg.author + "rolled: " + result);
+				bot.sendMessage(msg.channel, msg.author + " rolled: " + result);
 			}
 		}
 	}
