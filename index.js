@@ -102,10 +102,13 @@ var commands = {
 				try {
 					result = d20.roll(suffix);
 				} catch (e){
-					bot.sendMessage(msg.channel, "Could not roll " + suffix);
+					bot.sendMessage(msg.channel, msg.author + "Could not roll " + suffix);
 					return;
 				}
-				bot.sendMessage(msg.channel, msg.author + " rolled: " + d20.verboseRoll(suffix));
+				if (result != "NaN")
+					bot.sendMessage(msg.channel, msg.author + " rolled: " + d20.verboseRoll(suffix));
+				else
+					bot.sendMessage(msg.channel, msg.author + "Not a valid number");
 			}
 		}
 	}
