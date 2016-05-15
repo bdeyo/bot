@@ -19,6 +19,12 @@ try {
 	process.exit();
 }
 
+try {
+	var d20 = require("d20");
+} catch (e){
+	console.log("Please include d20 in package.json to have !roll function");
+}
+
 var commands = {
 	"dam": {
 		usage: "",
@@ -83,6 +89,24 @@ var commands = {
 		process: function(bot, msg) {
 			var result = 'https://media.giphy.com/media/1M9fmo1WAFVK0/giphy.gif';
 			bot.sendMessage(msg.channel, result);
+		}
+	},
+	"roll": {
+		usage: "[#d#] for multiple dice, else no input",
+		description: "dice roller, with single command giving a d20, otherwise rolling specified combo",
+		process: function(bot, msg, suffix) {
+			if(!suffix) {
+				bot.sendMessage(msg.channel, msg.author + "rolled: " + d20.roll(20));
+			} else {
+				var result;
+				try {
+					result = d20.roll(suffix);
+				} catch (e){
+					bot.sendMessage(msg.channel, "Could not roll " + suffix);
+					return;
+				}
+				bot.sendMessage(msg.channel, msg.author + "rolled: " + result);
+			}
 		}
 	}
 };
