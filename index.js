@@ -105,7 +105,7 @@ var commands = {
 					bot.sendMessage(msg.channel, msg.author + "Could not roll " + suffix);
 					return;
 				}
-				if (result != "NaN")
+				if (!isNaN(result))
 					bot.sendMessage(msg.channel, msg.author + " rolled: " + d20.verboseRoll(suffix));
 				else
 					bot.sendMessage(msg.channel, msg.author + "Not a valid number");
