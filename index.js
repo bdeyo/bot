@@ -66,7 +66,6 @@ var commands = {
 		process: function(bot, msg, suffix) {
 			var key = AuthDetails;
 			var Imgur = require('imgur-search');
-			//var ImgurResult = new Imgur(key.imgur_key);
 			
 			var term = suffix;
 			if(!term) {
@@ -126,7 +125,7 @@ bot.on('disconnected', function() {
 });
 
 bot.on("message", function (msg) {
-	if(msg.author.id != bot.user.id && (msg.content[0] === '!' || msg.content.indexOf(bot.user.mention()) == 0)){
+	if(msg.author.id != bot.user.id && msg.content[0] === '!'){
 		var cmdTxt = msg.content.split(" ")[0].substring(1);
         	var suffix = msg.content.substring(cmdTxt.length+2);
 		var cmd = commands[cmdTxt];
@@ -159,10 +158,8 @@ bot.on("message", function (msg) {
 				bot.sendMessage(msg.channel, "Invalid command " + cmdTxt);
 			}
 		}
-	} else {
-	        if (msg.author != bot.user && msg.isMentioned(bot.user)) {
-	                bot.sendMessage(msg.channel,msg.author + ", you called?");
-	        }
+	} else if (msg.author != bot.user && msg.isMentioned(bot.user)) {
+		bot.sendMessage(msg.channel,msg.author + ", you called?");
     	}
 });
 
