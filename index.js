@@ -131,20 +131,17 @@ bot.on("message", function (msg) {
 		var cmd = commands[cmdTxt];
 		
         	if(cmdTxt === "help"){
-			bot.sendMessage(msg.author,"Available Commands:", function(){
-				for(var cmd in commands) {
-					var info = "!" + cmd;
-					var usage = commands[cmd].usage;
-					if(usage){
-						info += " " + usage;
-					}
-					var description = commands[cmd].description;
-					if(description){
-						info += "\n\t" + description;
-					}
-					bot.sendMessage(msg.author,info);
+			var info = "Available Commands: ";
+			for(var cmd in commands) {
+				info += "!" + cmd;
+				var usage = commands[cmd].usage;
+				if(usage){
+					info += " " + usage + "; ";
 				}
-			});
+				else
+					info += "; ";
+			}
+			bot.sendMessage(msg.author,info);
         	} else if(cmd) {
 			try{
 				cmd.process(bot,msg,suffix);
