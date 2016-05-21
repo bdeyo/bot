@@ -107,7 +107,7 @@ var commands = {
 				if (!isNaN(result) && result != 'NaN')
 					bot.sendMessage(msg.channel, msg.author + " rolled: " + d20.verboseRoll(suffix));
 				else
-					bot.sendMessage(msg.channel, msg.author + "Not a valid number");
+					bot.sendMessage(msg.channel, msg.author + " Not a valid number");
 			}
 		}
 	}
