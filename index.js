@@ -30,7 +30,7 @@ var commands = {
 		usage: "",
 		description: "returns image/gif",
 		process: function(bot, msg) {
-			var rand = Math.floor((Math.random() * 2) + 1);
+			var rand = Math.floor(Math.random() * 2) + 1;
 			var result;
 			if (rand == 1)
 				result = 'https://i.imgur.com/7lZwLKc.jpg';
@@ -43,7 +43,7 @@ var commands = {
 		usage: "",
 		description: "returns image/gif",
 		process: function(bot, msg) {
-			var rand = Math.floor((Math.random() * 2) + 1);
+			var rand = Math.floor(Math.random() * 2) + 1;
 			var result;
 			if (rand == 1)
 			  result = 'https://i.imgur.com/gbXzYXp.gif';
@@ -91,7 +91,7 @@ var commands = {
 		}
 	},
 	"roll": {
-		usage: "[#d#] for multiple dice, else no input",
+		usage: "[#d#]",
 		description: "dice roller, with single command giving a d20, otherwise rolling specified combo",
 		process: function(bot, msg, suffix) {
 			if(!suffix) {
@@ -101,7 +101,7 @@ var commands = {
 				try {
 					result = d20.roll(suffix);
 				} catch (e){
-					bot.sendMessage(msg.channel, msg.author + "Could not roll " + suffix);
+					bot.sendMessage(msg.channel, msg.author + " Could not roll " + suffix);
 					return;
 				}
 				if (!isNaN(result) && result != 'NaN')
@@ -109,6 +109,24 @@ var commands = {
 				else
 					bot.sendMessage(msg.channel, msg.author + " Not a valid number");
 			}
+		}
+	},
+	"blown": {
+		usage: "",
+		description: "returns gif",
+		process: function(bot, msg) {
+			var result;
+			var rand = Math.floor(Math.random() * 7) + 1;
+			var gifs = [	'https://i.imgur.com/YGsTG5o.gifv',
+					'https://i.imgur.com/pBTk7MC.gif',
+					'https://i.imgur.com/rfFWukr.gifv',
+					'https://media.giphy.com/media/OK27wINdQS5YQ/giphy.gif',
+					'https://i.imgur.com/l4bJmRE.gifv',
+					'https://i.imgur.com/3WB3L.gif',
+					'https://giphy.com/gifs/cheezburger-robots-screaming-NfEQd1ge1kP04']
+					
+			rand -= 1;
+			bot.sendMessage(msg.channel, gifs[rand]);
 		}
 	}
 };
