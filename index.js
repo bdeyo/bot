@@ -169,7 +169,7 @@ bot.on("message", function (msg) {
 				}
 			}
 		} else {
-			bot.sendMessage(msg.channel, " Invalid command, Sucka!  Maybe you need some !help");
+			bot.sendMessage(msg.author, " Invalid command, Sucka!  Maybe you need some !help");
 		}
 	} else if (msg.author != bot.user && msg.isMentioned(bot.user)) {
 		bot.sendMessage(msg.channel,msg.author + ", you called?");
