@@ -1,4 +1,6 @@
 # bot
+[![Status](https://img.shields.io/badge/Status-Ready-green.svg?style=flat-square)]()
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)]()
 
 Based on the bots created from these fine repositories:
 
