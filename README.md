@@ -7,7 +7,7 @@ Based on the bots created from these fine repositories:
 >https://github.com/Cleanse/InsomBot
 >https://github.com/chalda/DiscordBot
 
-Used for a discord server, available commands: !help, !img, !why, !dam, !horse, !happy, !roll (more to come)
+Used for a discord server, available commands: !help, !img, !why, !dam, !horse, !happy, !roll, !blown (more to come)
 
 **Running:**
 
