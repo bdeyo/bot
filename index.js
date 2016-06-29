@@ -128,6 +128,24 @@ var commands = {
 			rand -= 1;
 			bot.sendMessage(msg.channel, gifs[rand]);
 		}
+	},
+	"weekend" {
+		usage: "",
+		description: "returns days until weekend",
+		process: function(bot, msg) {
+			var date = new Date();
+			var day = date.getDay();
+			var result = ["TGIF!", "1 Day left", "2 Days left", "3 Days left", "4 Days left"];
+			var temp = 6 - day;
+			
+			if (day == 6){
+				bot.sendMessage(msg.channel, "IT'S THE WEEKEND!");
+			} else if (day == 0) {
+				bot.sendMessage(msg.channel, "Last day, Enjoy it!");
+			} else {
+				bot.sendMessage(msg.channel, result[temp]);
+			}
+		}
 	}
 };
 
