@@ -116,7 +116,7 @@ var commands = {
 		description: "returns gif",
 		process: function(bot, msg) {
 			var result;
-			var rand = Math.floor(Math.random() * 7) + 1;
+			var rand = Math.floor(Math.random() * 6);
 			var gifs = [	'https://i.imgur.com/YGsTG5o.gifv',
 					'https://i.imgur.com/pBTk7MC.gif',
 					'https://i.imgur.com/rfFWukr.gifv',
