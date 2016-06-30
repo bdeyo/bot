@@ -129,7 +129,7 @@ var commands = {
 			bot.sendMessage(msg.channel, gifs[rand]);
 		}
 	},
-	"weekend" {
+	"weekend": {
 		usage: "",
 		description: "returns days until weekend",
 		process: function(bot, msg) {
