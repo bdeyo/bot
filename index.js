@@ -136,7 +136,7 @@ var commands = {
 			var date = new Date();
 			var day = date.getDay();
 			var result = ["TGIF!", "1 Day left", "2 Days left", "3 Days left", "4 Days left"];
-			var temp = 6 - day;
+			var temp = 5 - day;
 			
 			if (day == 6){
 				bot.sendMessage(msg.channel, "IT'S THE WEEKEND!");
