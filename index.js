@@ -125,7 +125,6 @@ var commands = {
 					'https://i.imgur.com/3WB3L.gif',
 					'https://giphy.com/gifs/cheezburger-robots-screaming-NfEQd1ge1kP04']
 					
-			rand -= 1;
 			bot.sendMessage(msg.channel, gifs[rand]);
 		}
 	},
