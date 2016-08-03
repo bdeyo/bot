@@ -117,11 +117,11 @@ var commands = {
 		process: function(bot, msg) {
 			var result;
 			var rand = Math.floor(Math.random() * 6);
-			var gifs = [	'https://i.imgur.com/YGsTG5o.gifv',
+			var gifs = [	'https://i.imgur.com/YGsTG5o.gif',
 					'https://i.imgur.com/pBTk7MC.gif',
-					'https://i.imgur.com/rfFWukr.gifv',
+					'https://i.imgur.com/rfFWukr.gif',
 					'https://media.giphy.com/media/OK27wINdQS5YQ/giphy.gif',
-					'https://i.imgur.com/l4bJmRE.gifv',
+					'https://i.imgur.com/l4bJmRE.gif',
 					'https://i.imgur.com/3WB3L.gif',
 					'https://giphy.com/gifs/cheezburger-robots-screaming-NfEQd1ge1kP04']
 					
