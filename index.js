@@ -118,16 +118,16 @@ var commands = {
 			var roll_bot;
 			var roll_usr;
 			
-			bot.sendMessage(msg.channel, "A CHALLENGER APPROACHES!")
 			roll_bot = d20.roll(20);
 			roll_usr = d20.roll(20);
+			bot.sendMessage(msg.channel, "A CHALLENGER APPROACHES!");
 			
 			if (roll_bot > roll_usr)
-				bot.sendMessage(msg.channel, "MUAHAHAHA. My " + roll_bot + " p4wned your " + roll_usr + ". Get rekt.")
+				bot.sendMessage(msg.channel, "MUAHAHAHA. My " + roll_bot + " p4wned your " + roll_usr + ". Get rekt.");
 			else if (roll_usr > roll_bot)
-				bot.sendMessage(msg.channel, "Lucky roll... My " + roll_bot + " can't beat your " + roll_usr + ".")
+				bot.sendMessage(msg.channel, "Lucky roll... My " + roll_bot + " can't beat your " + roll_usr + ".");
 			else
-				bot.sendMessage(msg.channel, "Tie? TIE!? Let's call that a win for me...")
+				bot.sendMessage(msg.channel, "Tie? TIE!? Let's call that a win for me...");
 		}
 	},
 	"blown": {
