@@ -153,16 +153,15 @@ var commands = {
 		process: function(bot, msg) {
 			var date = new Date();
 			var day = date.getDay();
-			var result = ["TGIF!", "1 Day left", "2 Days left", "3 Days left", "4 Days left"];
-			var temp = 5 - day;
-			
-			if (day == 6){
-				bot.sendMessage(msg.channel, "IT'S THE WEEKEND!");
-			} else if (day == 0) {
-				bot.sendMessage(msg.channel, "Last day, Enjoy it!");
-			} else {
-				bot.sendMessage(msg.channel, result[temp]);
-			}
+			var result = [  "Last day, Enjoy it!", 
+					"4 Days Left. Got a case of the Mondays?", 
+					"3 Days Left", 
+					"2 Days Left.  Hump Day!",
+					"1 Day Left",
+					"FRIDAY!",
+					"Less than 48 hours left..."];
+					
+			bot.sendMessage(msg.channel, result[day]);
 		}
 	}
 };
