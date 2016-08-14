@@ -25,6 +25,13 @@ try {
 	console.log("Please run npm install d20"+e.stack);
 }
 
+try {
+	var Stats = require("./user_stats.json");
+} catch (e){
+	console.log("Unable to provide stats: Missing file");
+	Stats.debug = true;
+}
+
 var commands = {
 	"dam": {
 		usage: "",
