@@ -170,6 +170,18 @@ var commands = {
 					
 			bot.sendMessage(msg.channel, result[day]);
 		}
+	},
+	"test": {
+		usage: "Admin only",
+		description: "",
+		process: function(bot, msg) {
+			if (msg.author.hasRole("Admin")) {
+				var tmp = JSON.parse(Stats);
+				bot.sendMessage(msg.channel, tmp);
+			} else
+				bot.sendMessage(msg.channel, "No.");
+			
+		}
 	}
 };
 
