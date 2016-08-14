@@ -1,10 +1,10 @@
 {
- "keywords": {
- },
  "database": {
 	"host": "127.0.0.1",
 	"database": "",
 	"user": "",
 	"password": ""
- }
+ 	},
+ "debug": "false",
+ "respondtoInvalid": "false"
 }
