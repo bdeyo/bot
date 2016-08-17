@@ -175,7 +175,7 @@ var commands = {
 		usage: "Admin only",
 		description: "",
 		process: function(bot, msg) {
-			if (bot.memberHasRole(msg.author, mgs.server.roles.get("name", "Admin"))) {
+			if (bot.memberHasRole(msg.author, msg.server.roles.get("name", "Admin"))) {
 				bot.sendMessage(msg.channel, "Good Afternoon, Mr. Admin");
 			} else {
 				bot.sendMessage(msg.channel, "No.");
