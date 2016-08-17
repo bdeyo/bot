@@ -177,11 +177,11 @@ var commands = {
 		usage: "Admin only",
 		description: "",
 		process: function(bot, msg) {
-			var temp = bot.server.roles.get("name", "Admin");
-			if(temp)
-				bot.sendMessage(msg.channel, temp);
-			else
-				bot.sendMessage(msg.channel, "Nope =(, temp =" + temp);
+			if (msg.author.role == "Admin") {
+				var tmp = JSON.parse(Stats);
+				bot.sendMessage(msg.channel, tmp);
+			} else
+				bot.sendMessage(msg.channel, "No.");
 		}
 	}
 };
