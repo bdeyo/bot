@@ -178,7 +178,11 @@ var commands = {
 		description: "",
 		process: function(bot, msg) {
 			var roles = msg.channel.server.roles;
-			bot.sendMessage(msg.channel, roles);
+			var admin = roles.get("name", "Admin").id;
+			if (msg.author.hasRole(admin))
+				bot.sendMessage(msg.channel, "Good afternoon, Mr. Admin");
+			else
+				bot.sendMessage(msg.channel, "Frig off...")
 		}
 	}
 };
