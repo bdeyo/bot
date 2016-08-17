@@ -175,12 +175,11 @@ var commands = {
 		usage: "Admin only",
 		description: "",
 		process: function(bot, msg) {
-			if (msg.author.hasRole("Admin")) {
-				var tmp = JSON.parse(Stats);
-				bot.sendMessage(msg.channel, tmp);
-			} else
+			if (bot.memberHasRole(msg.author, mgs.server.roles.get("name", "Admin"))) {
+				bot.sendMessage(msg.channel, "Good Afternoon, Mr. Admin");
+			} else {
 				bot.sendMessage(msg.channel, "No.");
-			
+			}
 		}
 	}
 };
