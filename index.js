@@ -179,7 +179,9 @@ var commands = {
 		process: function(bot, msg) {
 			var roles = msg.channel.server.roles;
 			if (msg.author.hasRole(roles[1]))
-				bot.sendMessage(msg.channel, "Good afternoon, Mr. Admin");
+				bot.sendMessage(msg.channel, "Good afternoon, Mr. Admin.  JSON test below");
+				var tmp = JSON.parse(Stats);
+ +				bot.sendMessage(msg.channel, tmp);
 			else
 				bot.sendMessage(msg.channel, "Frig off...")
 		}
