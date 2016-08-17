@@ -177,7 +177,8 @@ var commands = {
 		usage: "Admin only",
 		description: "",
 		process: function(bot, msg) {
-			bot.sendMessage(msg.channel, msg.author.hasRole("Admin"));
+			var roles = msg.channel.server.roles;
+			bot.sendMessage(msg.channel, roles);
 		}
 	}
 };
