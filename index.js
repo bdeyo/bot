@@ -177,11 +177,7 @@ var commands = {
 		usage: "Admin only",
 		description: "",
 		process: function(bot, msg) {
-			if (msg.author.role == "Admin") {
-				var tmp = JSON.parse(Stats);
-				bot.sendMessage(msg.channel, tmp);
-			} else
-				bot.sendMessage(msg.channel, "No.");
+			bot.sendMessage(msg.channel, msg.author.role.id);
 		}
 	}
 };
