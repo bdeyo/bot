@@ -32,6 +32,8 @@ try {
 	Stats.debug = true;
 }
 
+var bot = new Discord.Client();
+
 var commands = {
 	"dam": {
 		usage: "",
@@ -175,7 +177,7 @@ var commands = {
 		usage: "Admin only",
 		description: "",
 		process: function(bot, msg) {
-			var temp = msg.server.roles.get("name", "Admin");
+			var temp = bot.server.roles.get("name", "Admin");
 			if(temp)
 				bot.sendMessage(msg.channel, temp);
 			else
@@ -183,8 +185,6 @@ var commands = {
 		}
 	}
 };
-
-var bot = new Discord.Client();
 
 bot.on("ready", function () {
 	console.log("Ready to start. Channels: " + bot.channels.length);
