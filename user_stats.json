@@ -1,3 +1,6 @@
 {
-  "Player1": "test"
+  "members":{
+    "Player1": "test",
+    "Player2": "test2"
+  }
 }
