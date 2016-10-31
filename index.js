@@ -176,14 +176,21 @@ var commands = {
 	"test": {
 		usage: "Admin only",
 		description: "",
-		process: function(bot, msg) {
+		process: function(bot, msg, suffix) {
 			var roles = msg.channel.server.roles;
-			if (msg.author.hasRole(roles[1])) {
-				bot.sendMessage(msg.channel, "Good afternoon, Mr. Admin.  JSON test below");
-				var tmp = Stats;
-				bot.sendMessage(msg.channel, tmp.Player1);
-			} else
-				bot.sendMessage(msg.channel, "Frig off...")
+			if (suffix == "read"){
+				if (msg.author.hasRole(roles[1])) {
+					bot.sendMessage(msg.channel, "Good afternoon, Mr. Admin.  JSON test below");
+					bot.sendMessage(msg.channel, Stats.members);
+				} else
+					bot.sendMessage(msg.channel, "Frig off...");
+			}
+			if (suffix.match(/^write/)) {
+				if (msg.author.hasRole(roles[1]))
+					bot.sendMessage(msg.channel, "Still adding write");
+				else
+					bot.sendMessage(msg.channel, "Don't even try...");
+			}
 		}
 	}
 };
