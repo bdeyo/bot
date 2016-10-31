@@ -181,7 +181,7 @@ var commands = {
 			if (msg.author.hasRole(roles[1])) {
 				bot.sendMessage(msg.channel, "Good afternoon, Mr. Admin.  JSON test below");
 				var tmp = Stats;
-				bot.sendMessage(msg.channel, tmp);
+				bot.sendMessage(msg.channel, tmp.Player1);
 			} else
 				bot.sendMessage(msg.channel, "Frig off...")
 		}
