@@ -15,4 +15,8 @@ Used for a discord server, available commands: !help, !img, !why, !dam, !horse, 
 
 **Dependencies:**
 
+[Python 2.7](https://www.python.org/downloads/)
+[Git (Windows)](https://gitforwindows.org/)
+`npm install node.js`
 `npm install discord.io`
+`npm install woor/discord.io#gateway_v6`
