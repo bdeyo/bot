@@ -1,21 +1,20 @@
 {
  "name": "discordapp-tuttlebot",
- "descriptioin": "A chat bot for our server",
- "version": "0.1.0",
+ "description": "A chat bot for our server",
+ "version": "0.3.0",
  "author": {
-	"name": "Ben"
+  "name": "Ben"
  },
  "main": "index.js",
  "scripts": {
-	"start": "node index.js"
+  "start": "node index.js"
  },
  "dependencies": {
-	"discord.js": "^3.6.2",
-	"imgur-search": "^1.0.1",
-	"d20": "^1.4.0"
- },
- "keywords": [
-	"tuttlebot",
-	"discord"
- ]
+  "d20": "^1.4.0",
+  "discord.io": "github:woor/discord.io#gateway_v6",
+  "discord.js": "^8.2.0",
+  "git": "^0.1.5",
+  "node.js": "0.0.0",
+  "winston": "^2.4.0"
+ }
 }
