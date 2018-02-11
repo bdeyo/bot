@@ -11,4 +11,8 @@ Used for a discord server, available commands: !help, !img, !why, !dam, !horse, 
 
 **Running:**
 
-`auth.json` file with an email and password for a Discord account, as well as an Imgur key, saved as `"imgur_key": "<key>"`.  To run, `node index.js` will get it going.  [Forever](https://www.npmjs.com/package/forever) (`forever start -a index.js`) can be used to extend bot uptime .
+`auth.json` file with a token for a Discord App, as well as an Imgur key, saved as `"imgur_key": "<key>"`.  To run, `node index.js` will get it going.  [Forever](https://www.npmjs.com/package/forever) (`forever start -a index.js`) can be used to extend bot uptime .
+
+**Dependencies:**
+
+`npm install discord.io`
