@@ -49,7 +49,7 @@ var commands = {
 	"dam": {
 		usage: "",
 		description: "returns image/gif",
-		process: function(bot, channel) {
+		process: function(channel) {
 			var rand = Math.floor(Math.random() * 2) + 1;
 			var result;
 			if (rand == 1)
@@ -62,7 +62,7 @@ var commands = {
 	"happy": {
 		usage: "",
 		description: "returns image/gif",
-		process: function(bot, channel) {
+		process: function(channel) {
 			var rand = Math.floor(Math.random() * 2) + 1;
 			var result;
 			if (rand == 1)
@@ -75,7 +75,7 @@ var commands = {
 	"horse": {
 		usage: "",
 		description: "returns horse gif",
-		process: function(bot, channel) {
+		process: function(channel) {
 			var result = 'https://i.giphy.com/S4mOmgmpBQAXm.gif';
 			bot.sendMessage({to: channel, message: result});
 		}
@@ -84,7 +84,7 @@ var commands = {
 	"zzzimg": {
 		usage: "<search term>",
 		description: "searches imgur based on keyword",
-		process: function(bot, channel, suffix) {
+		process: function(channel, suffix) {
 			var key = AuthDetails;
 			var Imgur = require('imgur-search');
 			
@@ -106,7 +106,7 @@ var commands = {
 	"why": {
 		usage: "",
 		description: "returns gif",
-		process: function(bot, channel) {
+		process: function(channel) {
 			var result = 'https://media.giphy.com/media/1M9fmo1WAFVK0/giphy.gif';
 			bot.sendMessage({to: channel, message: result});
 		}
@@ -114,7 +114,7 @@ var commands = {
 	"roll": {
 		usage: "[#d#]",
 		description: "dice roller, with single command giving a d20, otherwise rolling specified combo",
-		process: function(bot, channel, suffix) {
+		process: function(channel, suffix) {
 			if (games.rolloff){
 				var roll_bot;
 				var roll_usr;
@@ -154,7 +154,7 @@ var commands = {
 	"rolloff": {
 		usage: "",
 		description: "Roll off against the bot (D20)",
-		process: function(bot, channel) {
+		process: function(channel) {
 			bot.sendMessage({to: channel, message:"A Challenger APPROACHES! Use !roll to compete against me!"});
 			games.rolloff = true;
 		}
@@ -162,7 +162,7 @@ var commands = {
 	"blown": {
 		usage: "",
 		description: "returns gif",
-		process: function(bot, channel) {
+		process: function(channel) {
 			var result;
 			var rand = Math.floor(Math.random() * 6);
 			var gifs = [	'https://i.imgur.com/YGsTG5o.gif',
@@ -179,7 +179,7 @@ var commands = {
 	"weekend": {
 		usage: "",
 		description: "returns days until weekend",
-		process: function(bot, channel) {
+		process: function(channel) {
 			var date = new Date();
 			var day = date.getDay();
 			var result = [  "Last day, Enjoy it!", 
@@ -197,7 +197,7 @@ var commands = {
 		// members in JSON file need to be lowercase
 		usage: "<user>",
 		description: "Score for users in chat games",
-		process: function(bot, channel, suffix, userID) {
+		process: function(channel, suffix, userID) {
 			if (isAdmin(userID)){
 				if (suffix){
 					var usr = suffix.toLowerCase();
@@ -247,8 +247,11 @@ function isAdmin(userID){
 // Ready trigger
 bot.on('ready', function () {
 	console.log("Ready to start.");
-	loadRoles();
-	console.log("Roles loaded");
+	try {
+		loadRoles();
+	} catch (e){
+		console.log('Unable to load role IDs'+e.stack);
+	}
 });
 
 // Disconnect trigger
@@ -280,7 +283,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			bot.sendMessage({to: userID, message: info});
 		} else if (result){
 			try {
-				result.process(bot,channelID,suffix,userID);
+				result.process(channelID,suffix,userID);
 			} catch (e){
 				console.log("Command failed: " + cmd + ". " + e.stack);
 			}
