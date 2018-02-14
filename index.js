@@ -153,7 +153,7 @@ var commands = {
 	},
 	"rolloff": {
 		usage: "",
-		description: "Roll off against the bot (D20)",
+		description: "roll off against the bot (D20)",
 		process: function(channel) {
 			bot.sendMessage({to: channel, message:"A Challenger APPROACHES! Use !roll to compete against me!"});
 			games.rolloff = true;
@@ -196,7 +196,7 @@ var commands = {
 	"stats": {
 		// members in JSON file need to be lowercase
 		usage: "<user>",
-		description: "Score for users in chat games",
+		description: "score for users in chat games",
 		process: function(channel, suffix, userID) {
 			if (isAdmin(userID)){
 				if (suffix){
@@ -263,24 +263,33 @@ bot.on('disconnected', function() {
 // Message trigger
 bot.on('message', function (user, userID, channelID, message, evt) {
 	// if message starts with '!', a command has been entered
-	if (message.substring(0,1) == '!'){
+	if (message.substring(0,1) == '!' && userID != bot.id){
 		var args = message.substring(1).split(' ');
 		var cmd = args[0];
 		var suffix = args[1];
 		var result = commands[cmd];
 		
 		if (cmd == 'help'){
-			var info = "Available Commands: ";
-			for (var cmd in commands){
-				info += "!" + cmd;
-				var usage = commands[cmd].usage;
-				if (usage){
-					info += " " + usage + "; ";
+			if (suffix){
+				var com = commands[suffix];
+				if (com){
+					bot.sendMessage({to: userID, message: "!" + suffix + " " + com.usage + " -> " + com.description});
 				} else {
-					info += "; ";
+					bot.sendMessage({to: userID, message: "No record for " + suffix});
 				}
+			} else {
+				var info = "Available Commands: ";
+				for (var cmd in commands){
+					info += "!" + cmd;
+					var usage = commands[cmd].usage;
+					if (usage){
+						info += " " + usage + "; ";
+					} else {
+						info += "; ";
+					}
+				}
+				bot.sendMessage({to: userID, message: info});
 			}
-			bot.sendMessage({to: userID, message: info});
 		} else if (result){
 			try {
 				result.process(channelID,suffix,userID);
