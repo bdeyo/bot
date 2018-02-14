@@ -25,12 +25,14 @@ try {
 	Stats.debug = true;
 }
 
+var roles = {};
+roles.admin_id = 0;
+roles.mod_id = 0;
 
 var bot = new Discord.Client({
 	token: AuthDetails.token,
 	autorun: true
 });
-console.log("username: " + bot.username + " ID: " + bot.id);
 
 var commands = {
 	"dam": {
@@ -172,30 +174,57 @@ var commands = {
 			bot.sendMessage({to: channel, message:result[day]});
 		}
 	},
-	"test": {
-		usage: "Admin only",
+	"stats": {
+		usage: "Score for users in chat games",
 		description: "",
-		process: function(bot, channel, suffix) {
-			var roles = channel.server.roles;
-			if (suffix == "read"){
-				if (msg.author.hasRole(roles[1])) {
-					bot.sendMessage({to: channel, message:"Good afternoon, Mr. Admin.  JSON test below"});
-					bot.sendMessage({to: channel, message:Stats.members});
-				} else
-					bot.sendMessage({to: channel, message:"Frig off..."});
-			}
-			if (suffix.match(/^write/)) {
-				if (channel.author.hasRole(roles[1]))
-					bot.sendMessage({to: channel, message:"Still adding write"});
-				else
-					bot.sendMessage({to: channel, message:"Don't even try..."});
+		process: function(bot, channel, suffix, userID) {
+			if (isAdmin(userID)){
+				if (suffix){
+					var usr = suffix.toLowerCase();
+					var score = Stats.members[usr];
+					if (score != null)
+						bot.sendMessage({to: channel, message: "Score: " + score});
+					else
+						bot.sendMessage({to: channel, message: "nothing!"});
+				} else {
+					bot.sendMessage({to: channel, message:"Pong"});
+				}
+			} else {
+				bot.sendMessage({to: channel, message:"For admins only, I'm afraid"});
 			}
 		}
 	}
 };
 
+function loadRoles(){
+	for (var r in bot.servers[AuthDetails.server_id].roles){
+		var role = bot.servers[AuthDetails.server_id].roles[r];
+		var propVal;
+		for (var prop in role){
+			propVal = role[prop];
+			if (prop == 'name' && propVal == 'Admin'){
+				roles.admin_id = role['id'];
+			}
+			if (prop == 'name' && propVal == 'Moderator'){
+				roles.mod_id = role['id'];
+			}
+		}
+	}
+}
+
+function isAdmin(user){
+	var usrRoles = bot.servers[AuthDetails.server_id].members[user].roles;
+	for (var i = 0; i < usrRoles.length; i++){
+		if (usrRoles[i] == roles.admin_id)
+			return true;
+	}
+	return false;
+}
+
 bot.on('ready', function () {
-	console.log("Ready to start. Channels: " + bot.channels.length);
+	console.log("Ready to start.");
+	loadRoles();
+	console.log("Roles loaded");
 });
 
 
@@ -216,7 +245,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			bot.sendMessage({to: userID, message: info});
 		} else if (result){
 			try {
-				result.process(bot,channelID,suffix);
+				result.process(bot,channelID,suffix,userID);
 			} catch (e){
 				console.log("Command failed: " + cmd + ". " + e.stack);
 			}
