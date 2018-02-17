@@ -264,7 +264,7 @@ bot.on('disconnected', function() {
 bot.on('message', function (user, userID, channelID, message, evt) {
 	// if message starts with '!', a command has been entered
 	if (message.substring(0,1) == '!' && userID != bot.id){
-		var args = message.substring(1).split(' ');
+		var args = message.substring(1).toLowerCase().split(' ');
 		var cmd = args[0];
 		var suffix = args[1];
 		var result = commands[cmd];
