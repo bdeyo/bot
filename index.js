@@ -80,27 +80,14 @@ var commands = {
 			bot.sendMessage({to: channel, message: result});
 		}
 	},
-	//NEEDS UPDATE
-	"zzzimg": {
-		usage: "<search term>",
-		description: "searches imgur based on keyword",
-		process: function(channel, suffix) {
-			var key = AuthDetails;
-			var Imgur = require('imgur-search');
-			
-			var term = suffix;
-			if(!term) {
-				bot.sendMessage({to: channel, message:"No Search Term"});
-				return;
-			}
-			new Imgur(key.imgur_key).search(term).then(function(result) {
-				if (result.length == 0 || result == undefined) {
-					bot.sendMessage({to: channel, message:"You suck at searching"});
-				} else {
-					var img = result[Math.floor(Math.random() * result.length)];
-					bot.sendMessage({to: channel, message: img.link});
-				}
-			});
+	"think": {
+		usage: "",
+		description: "spam chat",
+		process: function(channel) {
+			var result = "\n .\n      ⠰⡿⠿⠛⠛⠻⠿⣷\n⠀⠀⠀⠀⠀⠀⣀⣄⡀⠀⠀⠀⠀⢀⣀⣀⣤⣄⣀⡀\n⠀⠀⠀⠀⠀⢸⣿⣿⣷⠀⠀⠀⠀⠛⠛⣿⣿⣿⡛⠿⠷\n⠀⠀⠀⠀⠀⠘⠿⠿⠋⠀⠀⠀⠀⠀⠀⣿⣿⣿⠇\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠁\
+			\n\n⠀⠀⠀⠀⣿⣷⣄⠀⢶⣶⣷⣶⣶⣤⣀\n⠀⠀⠀⠀⣿⣿⣿⠀⠀⠀⠀⠀⠈⠙⠻⠗\n⠀⠀⠀⣰⣿⣿⣿⠀⠀⠀⠀⢀⣀⣠⣤⣴⣶⡄\n⠀⣠⣾⣿⣿⣿⣥⣶⣶⣿⣿⣿⣿⣿⠿⠿⠛⠃\n⢰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄\
+			\n⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡁\n⠈⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠁\n⠀⠀⠛⢿⣿⣿⣿⣿⣿⣿⡿⠟\n⠀⠀⠀⠀⠀⠉⠉⠉";
+			bot.sendMessage({to: channel, message: result});
 		}
 	},
 	"why": {
