@@ -179,27 +179,6 @@ var commands = {
 					
 			bot.sendMessage({to: channel, message:result[day]});
 		}
-	},
-	"stats": {
-		// members in JSON file need to be lowercase
-		usage: "<user>",
-		description: "score for users in chat games",
-		process: function(channel, suffix, userID) {
-			if (isAdmin(userID)){
-				if (suffix){
-					var usr = suffix.toLowerCase();
-					var score = Stats.members[usr];
-					if (score != null)
-						bot.sendMessage({to: channel, message: "Score: " + score});
-					else
-						bot.sendMessage({to: channel, message: "nothing!"});
-				} else {
-					bot.sendMessage({to: channel, message:"Pong"});
-				}
-			} else {
-				bot.sendMessage({to: channel, message:"For admins only, I'm afraid"});
-			}
-		}
 	}
 };
 
