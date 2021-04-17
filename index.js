@@ -1,3 +1,5 @@
+const truncator = require('./functions/refTruncator');
+
 // Setting up required files the bot will need
 //	* Some are required only for specific commands
 try {
@@ -264,6 +266,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			}
 		} else {
 			bot.sendMessage({to: channelID, message: "Not a command, use !help"});
+		}
+	} else {
+		const truncated = truncator.truncator(message);
+		if(truncated) {
+			bot.sendMessage({to: channelID, message: `fuck your ref!! ${truncated}`});
 		}
 	}
 });
